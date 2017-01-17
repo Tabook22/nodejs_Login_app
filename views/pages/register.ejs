@@ -1,0 +1,101 @@
+<!-- pages/regiter.ejs -->
+
+<form class="form-horizontal" method="post" action="/users/register">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Form Name</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Full Name">Full Name</label>  
+  <div class="col-md-4">
+  <input id="Full Name" name="name" placeholder="" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Mobile No">Mobile No</label>  
+  <div class="col-md-4">
+  <input id="Mobile No" name="Mobile No" placeholder="" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<!--// <div class="form-group">
+//   <label class="col-md-4 control-label" for="Email Id">Email Id</label>  
+//   <div class="col-md-4">
+//   <input id="Email Id" name="Email Id" placeholder="" class="form-control input-md" required="" type="text">
+    
+//   </div>
+// </div>-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Email Id">Username</label>  
+  <div class="col-md-4">
+  <input id="username" name="username" placeholder="" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password">Password</label>
+  <div class="col-md-4">
+    <input id="password" name="password" placeholder="" class="form-control input-md" required="" type="password">
+    
+  </div>
+</div>
+
+<!-- Confirm Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password">Confirm Password</label>
+  <div class="col-md-4">
+    <input id="password2" name="password2" placeholder="" class="form-control input-md" required="" type="password">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="company name">Company Name</label>  
+  <div class="col-md-4">
+  <input id="company name" name="company name" placeholder="" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="companyprofile">Company Profile</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="companyprofile" name="companyprofile"></textarea>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="country">Country</label>
+  <div class="col-md-4">
+    <select id="country" name="country" class="form-control">
+      <option value="1">India</option>
+      <option value="2">USA</option>
+      <option value="">UK</option>
+      <option value="">UAE</option>
+    </select>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="register"></label>
+  <div class="col-md-4">
+    <button id="register" name="register" class="btn btn-primary">Register</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
