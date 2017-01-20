@@ -28,6 +28,7 @@ app.use(ejsLayouts);
 //BodyParser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(expressValidator()); //here am using expressValidator as a method, and notice it should be alter body parser, becuse it need to access the parsed valued to check them
 app.use(cookieParser());
 
 //Set Static Folder
@@ -36,8 +37,8 @@ app.use(express.static(path.join(__dirname,'public')));
 //Express session
 app.use(session({
     secret:'secret',
-    saveUninitialized:true,
-    resave:true
+    saveUninitialized:false, //if it' true that means make sure that our session is stored at session storage event if it's not yet initialized, but here we set it to false, save it only if it is inizlized
+    resave:false //if it is true means save our session after each requiest event if is not yet intialized, but we set it to false to save session only if it we change some thing
 }));
 
 //Passport Init
@@ -45,22 +46,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Express validator
-app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
+// app.use(expressValidator({
+//   errorFormatter: function(param, msg, value) {
+//       var namespace = param.split('.')
+//       , root    = namespace.shift()
+//       , formParam = root;
 
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
+//     while(namespace.length) {
+//       formParam += '[' + namespace.shift() + ']';
+//     }
+//     return {
+//       param : formParam,
+//       msg   : msg,
+//       value : value
+//     };
+//   }
+// }));
 
 
 //Connect flash

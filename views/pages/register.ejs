@@ -1,5 +1,11 @@
 <!-- pages/regiter.ejs -->
 
+<ul>
+    <% errors.forEach(function(err) { %>
+        <li style="font-weight:bold;color:red;"><%= err.msg %></li>
+    <% }); %>
+</ul>
+
 <form class="form-horizontal" method="post" action="/users/register">
 <fieldset>
 
@@ -17,21 +23,12 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Mobile No">Mobile No</label>  
+  <label class="col-md-4 control-label" for="Mobile No">Email:</label>  
   <div class="col-md-4">
-  <input id="Mobile No" name="Mobile No" placeholder="" class="form-control input-md" required="" type="text">
+  <input id="email" name="email" placeholder="" class="form-control input-md" required="" type="text">
     
   </div>
 </div>
-
-<!-- Text input-->
-<!--// <div class="form-group">
-//   <label class="col-md-4 control-label" for="Email Id">Email Id</label>  
-//   <div class="col-md-4">
-//   <input id="Email Id" name="Email Id" placeholder="" class="form-control input-md" required="" type="text">
-    
-//   </div>
-// </div>-->
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="Email Id">Username</label>  
@@ -69,15 +66,15 @@
 </div>
 
 <!-- Textarea -->
-<div class="form-group">
+<!--<div class="form-group">
   <label class="col-md-4 control-label" for="companyprofile">Company Profile</label>
   <div class="col-md-4">                     
     <textarea class="form-control" id="companyprofile" name="companyprofile"></textarea>
   </div>
-</div>
+</div>-->
 
 <!-- Select Basic -->
-<div class="form-group">
+<!--<div class="form-group">
   <label class="col-md-4 control-label" for="country">Country</label>
   <div class="col-md-4">
     <select id="country" name="country" class="form-control">
@@ -87,7 +84,7 @@
       <option value="">UAE</option>
     </select>
   </div>
-</div>
+</div>-->
 
 <!-- Button -->
 <div class="form-group">
