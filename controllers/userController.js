@@ -1,30 +1,57 @@
 var User=require('../models/users');
+//var passport=require('passport');
+//var LocalStrategy=require('passport-local').Strategy; //we are using a local strategy becasue we have alocal database
+
+
+//----------------------------------------------------------------------------------------------------------
+// here inside the /routes/index.js we deteramin routes , so any route asking for "get login"" will be routed or directed to loginGet property which will direct the requst to a function with the same name loginGet, and any 
+//requesto to "post login", will be directed to loginPost property and then will directed to a function loginPost, and any request asking for register will be directed to register propetrty, and that propety will direct the request to a function with the same name and so on
 module.exports={
-    login:login,
+    loginGet:loginGet,
+    loginPost:loginPost,
     register:register,
     logout:logout,
     registerUser:registerUser
 }
 
-//Login function 
-function login(req,res){
+//Login function get-----------------------------------------------------------------------------------------
+function loginGet(req,res){
     //TODO:login code
-     res.render('./pages/login',{layout:"./layouts/layout",expressFlash:req.flash('success_msg')});
+     res.render('./pages/login',{layout:"./layouts/layout",success_msg:req.flash('success_msg')});
 }
 
-//Register function 
+
+
+//Login function post-----------------------------------------------------------------------------------------
+//passport.authenticate('local',{successRedirect:'/', failureRedirect:'/users/login',failurFlash:true})
+function loginPost(req,res){
+   // passport.authenticate('local',{successRedirect:'/', failureRedirect:'/users/login',failurFlash:true});
+    res.redirect('/');
+}
+// app.post('/login',
+//   passport.authenticate('local'),
+//   function(req, res) {
+//     // If this function gets called, authentication was successful.
+//     // `req.user` contains the authenticated user.
+//     res.redirect('/users/' + req.user.username);
+//   });
+
+//Register function--------------------------------------------------------------------------------------------- 
 errors=[];
 function register(req,res){
     //TODO:Register code
      res.render('./pages/register',{errors:errors,layout:"./layouts/layout"});
 }
 
-//Logout function 
+//Logout function------------------------------------------------------------------------------------------------- 
 function logout(req,res){
     //TODO:Logout code
+    req.logout();
+    req.flash('success_msg','You are logged out');
+    res.redirect('/users/login');
 }
 
-//Register New user function
+//Register New user function--------------------------------------------------------------------------------------
 function registerUser(req,res){
     var vname=req.body.name;
     var vemail=req.body.email;

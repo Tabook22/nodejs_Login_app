@@ -5,17 +5,17 @@ var bodyParser=require('body-parser');
 var cookieParser=require('cookie-parser');
 var ejs=require('ejs');
 var expressValidator=require('express-validator');
-var flash=require('connect-flash');
+var flash=require('connect-flash');//The flash is a special area of the session used for storing messages.
 var session=require('express-session');
 var passport=require('passport');
-var localStrategy=require('passport-local'),Strategy;
+var localStrategy=require('passport-local'),Strategy; //This module lets you authenticate using a username and password in your Node.js applications, because our username and password stored in our database
 var mongodb=require('mongodb');
 var mongoose=require('mongoose');
 mongoose.connect('mongodb://localhost/loginapp');
 var db=mongoose.connection;
 
+//Routes
 var routes=require('./routes/index');
-var users=require('./routes/users');
 
 //Init App
 var app=express();
@@ -64,7 +64,10 @@ app.use(passport.session());
 // }));
 
 
-//Connect flash
+//Connect flash we must set it after we set our session and cookies
+//The flash is a special area of the session used for storing messages. Messages are written to the flash and 
+//cleared after being displayed to the user. The flash is typically used in combination with redirects, ensuring 
+//that the message is available to the next page that is to be rendered.
 app.use(flash());
 
 //Global vars for our flash messages
@@ -72,13 +75,13 @@ app.use(function(req,res,next){
     res.locals.success_msg=req.flash('success-msg');
     res.locals.error_msg=req.flash('error_msg');
     res.locals.error=req.flash('error'); // this we use it because passport sets its own messages an errorss
+    res.locals.user=req.user || null; // if the user is there we will be able to access it from any where otherwise it is  null
     next();
 });
 
 // Some middleware for our routes
 app.use('/', routes);
-app.use('/users',users);
-
+app.use('/users',routes);
 
 //set the port and start the server
 app.set('port', (process.env.PORT || 8000));

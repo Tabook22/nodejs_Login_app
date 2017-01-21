@@ -1,14 +1,21 @@
 <!-- partials/login.ejs -->
 
 <div class="container">
-<div class="row">
-      <div class="container">
-        <!-- display the success message -->
-        <div class="alert alert-success"><%=expressFlash%></div>
+  <div class="row">
+    <div class="container">
+      <!-- display the success message -->
+      <% if(success_msg){%>
+        <div class="alert alert-success">
+          <%=success_msg%>
+        <%}%>
 
-      
-      </div>
+        <!-- display the error message -->
+      <% if(error_msg){%>
+          <%=error_msg%>
+        </div>
+        <%}%>
     </div>
+  </div>
   <div class="row">
 
     <div class="main">
@@ -28,13 +35,13 @@
 
       <form role="form" method="post" action="/users/login">
         <div class="form-group">
-          <label for="inputUsernameEmail">Username or email</label>
-          <input type="text" class="form-control" id="inputUsernameEmail">
+          <label for="username">Username or email</label>
+          <input type="text" class="form-control" name="username" id="username">
         </div>
         <div class="form-group">
           <a class="pull-right" href="#">Forgot password?</a>
-          <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="inputPassword">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password">
         </div>
         <div class="checkbox pull-right">
           <label>
@@ -45,8 +52,8 @@
           Log In
         </button>
       </form>
-    
+
     </div>
-    
+
   </div>
 </div>

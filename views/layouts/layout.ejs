@@ -27,10 +27,14 @@
    <a class="navbar-brand" href="#"> Bootsnipp</a>
        <div class="navbar-collapse collapse">
            <ul class="nav navbar-nav navbar-right">
-		     <li class=""><a href="/">Dashboard</a> </li>
-             <li class=""><a href="/users/login">Login</a> </li>
-             <li class=""><a href="/users/register">Register</a> </li>
-             <li class=""><a href="/users/logout">Logout</a> </li>
+             <%if(!user){%>
+              <li class=""><a href="/users/login">Login</a> </li>
+              <li class=""><a href="/users/register">Register</a> </li>
+             <%}%>
+             <%if(user){%>
+              <li class=""><a href="/">Dashboard</a> </li>
+              <li class=""><a href="/users/logout">Logout</a> </li>
+             <%}%>
 			 <li> <a href="#">about</a> </li>
 			    <li class="dropdown">
 			       <a href="#" class="dropdown-toggle"
